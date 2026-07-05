@@ -1,9 +1,15 @@
-from ocr.google_vision_ocr import google_vision_ocr_with_confidence
+from ocr.inference import cnn_bilstm_ctc_ocr
+
 
 def extract_blister_text(image_path):
-    text, conf = ocr_with_confidence(image_path)
+    """
+    Extract OCR text from a blister image using the
+    CNN + BiLSTM + CTC OCR pipeline.
+    """
+
+    text, confidence = cnn_bilstm_ctc_ocr(image_path)
+
     return {
         "ocr_text": text,
-        "ocr_confidence": conf
+        "ocr_confidence": confidence
     }
-
